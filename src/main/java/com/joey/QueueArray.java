@@ -1,15 +1,14 @@
 package com.joey;
 
-public class QueueArray<T> {
-    private T[] array;
+public class QueueArray {
+    private Animal[] array;
     private int queueEnd;
     private int queueSize;
     private int queueStart;
 
 
-    @SuppressWarnings("unchecked")
     public QueueArray(int size) {
-        this.array = (T[]) new Object[size];
+        this.array = new Animal[size];
         this.queueStart = -1;
         this.queueSize = 0;
         this.queueEnd = -1;
@@ -27,7 +26,7 @@ public class QueueArray<T> {
     }
 
 
-    public  void enQueue(T element){
+    public  void enqueue(Animal element){
         if (isFull()){
             System.out.println("The Queue is full");
         } else if (isEmpty()){
@@ -43,7 +42,7 @@ public class QueueArray<T> {
     }
 
 
-    public T peek(){
+    public Animal peek(){
         if (!isEmpty()){
             return array[queueStart];
         } else {
@@ -52,12 +51,12 @@ public class QueueArray<T> {
     }
 
 
-    public T deQueue(){
+    public Animal dequeue(){
         if (isEmpty()){
             System.out.println("The Queue is Empty.");
             return null;
         } else {
-            T result = array[queueStart];
+            Animal result = array[queueStart];
             queueStart++;
 
             if (queueStart > queueEnd) {
@@ -73,5 +72,39 @@ public class QueueArray<T> {
     public void deleteQueue(){
         array = null;
         System.out.println("The Queue was successfully deleted.");
+    }
+
+
+    public Animal[] getArray() {
+        return this.array;
+    }
+
+    public int getQueueEnd() {
+        return this.queueEnd;
+    }
+
+    public int getQueueSize() {
+        return this.queueSize;
+    }
+
+    public int getQueueStart() {
+        return this.queueStart;
+    }
+
+
+    public void setArray(Animal[] array) {
+        this.array = array;
+    }
+
+    public void setQueueEnd(int queueEnd) {
+        this.queueEnd = queueEnd;
+    }
+
+    public void setQueueSize(int queueSize) {
+        this.queueSize = queueSize;
+    }
+
+    public void setQueueStart(int queueStart) {
+        this.queueStart = queueStart;
     }
 }
